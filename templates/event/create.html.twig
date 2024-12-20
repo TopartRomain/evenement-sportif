@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-4">
+<h1 class="my-4">Créer un nouvel événement</h1>
+
+{{ form_start(form) }}
+    <div class="mb-3">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_errors(form.date) }}
+    </div>
+
+    <div class="mb-3">
+    {{ form_label(form.locationLatitude, 'Latitude') }}
+    {{ form_widget(form.locationLatitude, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_errors(form.locationLatitude) }}
+</div>
+
+<div class="mb-3">
+    {{ form_label(form.locationLongitude, 'Longitude') }}
+    {{ form_widget(form.locationLongitude, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_errors(form.locationLongitude) }}
+</div>
+
+{{ form_end(form) }}
+
+<a href="{{ path('list_events') }}" class="btn btn-secondary mt-3">Retour à la liste des événements</a>
+</div>
+{% endblock %}

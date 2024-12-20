@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container my-4">
+    <h1 class="d-flex justify-content-between align-items-center">
+        Liste des événements
+        <a href="{{ path('create_event') }}" class="btn btn-success">Nouveau</a>
+    </h1>
+
+    <!-- Tableau avec un style plus avancé -->
+    <table class="table table-hover table-striped table-bordered mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td>{{ event.name }}</td>
+                    <td>{{ event.date|date('Y-m-d H:i') }}</td>
+                    <td>{{ event.location }}</td>
+                    <td>
+                        <a href="{{ path('view_event', { id: event.id }) }}" class="btn btn-primary">Voir</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Aucun événement</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
